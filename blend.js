@@ -1,6 +1,6 @@
 const blendprofiles = {
     config: {},
-    init: function(){
+    exec: function(){
         // Function to replace placeholders with actual values
         function replacePlaceholders() {
             var regex = /\${{([^}]+)}}/g;
@@ -51,5 +51,8 @@ const blendprofiles = {
             head.appendChild(newFavicon);
         }
         setFavicon(blendprofiles.config.favicon);
+    },
+    init: function(){
+        setTimeout(blendprofiles.exec,10)
     }
 };
