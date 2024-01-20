@@ -8,13 +8,70 @@ To use Blendium in your project, simply import the `blend.js` file. You can down
 ```html
 <script src="//raw.githubusercontent.com/0x32-l3git/blendium/main/blend.js"></script>
 ```
+
 ### Usage
 To leverage Blendium, you need to define a configuration object (`blendprofiles`) and initialize Blendium using the `init` function. Below is a basic example:
 ```js
-blendprofiles.config = {
-        title: "My App",
+setTimeout(init,5)
+function init(){
+    blendprofiles.config = {
+        text: "Hello world!",
+        title: 'MyApp',
         favicon: "path/to/favicon.ico",
-        // Add other configuration options as needed
+    }
+    blendprofiles.init();
 }
-blendprofile.init()
+```
+
+### Dynamic Content Replacement
+Blendium provides a dynamic content replacement feature, allowing you to replace placeholders in your HTML with actual values from the configuration object. Placeholders should be defined using the `${{placeholder}}` syntax. For example:
+
+```html
+<div id="blendui">
+    <h1>${{text}}</h1>
+    <h1>${{title}}</h1>
+    <img src="${{config.logo}}" alt="Logo">
+    <!-- Add other placeholders as needed -->
+</div>
+```
+When Blendium initializes, it will replace these placeholders with the corresponding values from the configuration.
+
+### Dynamic Title and Favicon
+Blendium automatically handles dynamic title and favicon changes based on your configuration. Simply update the `config.title` and `config.favicon` properties, and Blendium will reflect these changes in the document title and favicon, respectively.
+```js
+blendprofiles.config.title = "New Title";
+blendprofiles.config.favicon = "path/to/new-favicon.ico";
+blendprofiles.init(); // ReInit to apply changes
+```
+
+### Examples
+Check out a simple example using Blendium in your HTML:
+
+index.html:
+```html
+<div id="blendui">
+    <section>
+    <div class="right-align big">
+        <h1>${{title}}</h1>
+        <p>${{foo}}</p>
+        <p>${{about}}</p>
+    </div>
+    </section>
+</div>
+
+<!-- JavaScript Scripts -->
+<script src="app.js"></script><script src="blend.js"></script>
+```
+
+app.js:
+```js
+setTimeout(init,5)
+function init(){
+    blendprofiles.config = {
+        foo: "We are a well known cobalt miner company well known for cobalt ;) 🔋",
+        title: 'Cobalt mine LTD',
+        about: "Lorem ipsum"
+    }
+    blendprofiles.init();
+}
 ```
