@@ -75,3 +75,9 @@ function init(){
     blendprofiles.init();
 }
 ```
+
+## Contributions
+Feel free to contribute to Blendium by reporting issues or submitting pull requests on the GitHub repository. Your feedback and contributions are highly appreciated!
+
+## License
+Blendium is licensed under the MIT License. See the LICENSE file for details.
