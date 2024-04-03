@@ -1,11 +1,9 @@
 const blendprofiles = {
-    config: {},
-    init: function(){
+    init: function() {
         // Function to replace placeholders with actual values
-        function replacePlaceholders() {
+        function replacePlaceholders(blendui) {
             var regex = /\${{([^}]+)}}/g;
-            var blendui = document.getElementById('blendui'); // Select the div with id 'blendui'
-            var matches = blendui.innerHTML.match(regex); // Match placeholders within the 'blendui' div
+            var matches = blendui.innerHTML.match(regex); // Match placeholders within the blendui div
 
             if (matches) {
                 matches.forEach(function(match) {
@@ -29,10 +27,15 @@ const blendprofiles = {
             return value;
         }
 
-        // Call the replacePlaceholders function to replace the placeholders
-        replacePlaceholders();
+        // Function to initialize blendprofiles
+        function initialize() {
+            var blendElements = document.querySelectorAll('.blendui'); // Select all elements with class 'blendui'
+            blendElements.forEach(function(blendui) {
+                replacePlaceholders(blendui);
+            });
+        }
 
-        document.title = blendprofiles.config.title;
+        // Function to set favicon
         function setFavicon(url) {
             const head = document.querySelector('head');
 
@@ -50,6 +53,12 @@ const blendprofiles = {
             // Append the new favicon to the head
             head.appendChild(newFavicon);
         }
+
+        // Call initialize function to replace placeholders for all blendui elements
+        initialize();
+        
+        // Set document title and favicon
+        document.title = blendprofiles.config.title;
         setFavicon(blendprofiles.config.favicon);
     }
 };
