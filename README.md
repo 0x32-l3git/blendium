@@ -12,15 +12,14 @@ To use Blendium in your project, simply import the `blend.js` file. You can down
 ### Usage
 To leverage Blendium, you need to define a configuration object (`blendprofiles`) and initialize Blendium using the `init` function. Below is a basic example:
 ```js
-setTimeout(init,5)
-function init(){
-    blendprofiles.config = {
+blendprofiles.config = {
         text: "Hello world!",
         title: 'MyApp',
         favicon: "path/to/favicon.ico",
-    }
-    blendprofiles.init();
 }
+document.addEventListener('DOMContentLoaded', function() {
+        blendprofiles.init();
+    });
 ```
 
 ### Dynamic Content Replacement
@@ -65,15 +64,16 @@ index.html:
 
 app.js:
 ```js
-setTimeout(init,5)
+
 function init(){
     blendprofiles.config = {
         foo: "We are a well known cobalt miner company well known for cobalt ;) 🔋",
         title: 'Cobalt mine LTD',
         about: "Lorem ipsum"
-    }
-    blendprofiles.init();
 }
+document.addEventListener('DOMContentLoaded', function() {
+        blendprofiles.init();
+    });
 ```
 
 ## Contributions
